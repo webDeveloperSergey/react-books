@@ -1,0 +1,39 @@
+.cart {
+  width: 130px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__item {
+    position: relative;
+  }
+
+  &__price {
+    display: inline-block;
+    margin-right: 2px;
+    font-size: 20px;
+  }
+
+  &__line {
+    height: 16px;
+    width: 1px;
+    border: 0;
+    background-color: #A2A2A2;
+  }
+
+  &__count_ofproduct {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 23px;
+    height: 23px;
+    background-color: #2A2A2A;
+    border-radius: 50%;
+    color: #fff;
+    position: absolute;
+    top: -11px;
+    right: -10px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+}

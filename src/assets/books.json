@@ -1,0 +1,92 @@
+[
+  {
+    "id": 0,
+    "imageUrl": "https://img-gorod.ru/24/412/2441276_detail.jpg",
+    "title": "Гарри Поттер и&nbsp;Кубок Огня",
+    "author": "Дж.К. Роулинг",
+    "price": 819,
+    "category": 1,
+    "rating": 5
+    },
+    {
+    "id": 1,
+    "imageUrl": "https://img-gorod.ru/29/187/2918739_detail.jpg",
+    "title": "Хоббит",
+    "author": "Толкин Д.Р.",
+    "price": 795,
+    "category": 3,
+    "rating": 5
+    },
+    {
+    "id": 2,
+    "imageUrl": "https://img-gorod.ru/24/591/2459101_detail.jpg",
+    "title": "Мастер и&nbsp;Маргарита",
+    "author": "М.А. Булгаков",
+    "price": 249,
+    "category": 2,
+    "rating": 4
+    },
+    {
+    "id": 3,
+    "imageUrl": "https://img-gorod.ru/27/013/2701331_detail.jpg",
+    "title": "Убийство в&nbsp;&laquo;Восточном экспрессе&raquo;",
+    "author": "Агата Кристи",
+    "price": 264,
+    "category": 4,
+    "rating": 4
+    },
+    {
+    "id": 4,
+    "imageUrl": "https://img-gorod.ru/29/228/2922842_detail.jpg",
+    "title": "Отцы и дети",
+    "author": "Тургенев И.С.",
+    "price": 289,
+    "category": 2,
+    "rating": 5
+    },
+    {
+    "id": 5,
+    "imageUrl": "https://img-gorod.ru/24/211/2421138_detail.jpg",
+    "title": "Война и мир",
+    "author": "Лев Толстой",
+    "price": 1145,
+    "category": 2,
+    "rating": 3
+    },
+    {
+    "id": 6,
+    "imageUrl": "https://img-gorod.ru/23/970/2397044_detail.jpg",
+    "title": "Автостопом по&nbsp;Галактике",
+    "author": "Дуглас Адамс",
+    "price": 595,
+    "category": 1,
+    "rating": 2
+    },
+    {
+    "id": 7,
+    "imageUrl": "https://img-gorod.ru/22/625/2262514_detail.jpg",
+    "title": "Таинственный остров",
+    "author": "Жюль Верн",
+    "price": 202,
+    "category": 3,
+    "rating": 4
+    },
+    {
+    "id": 8,
+    "imageUrl": "https://img-gorod.ru/26/993/2699375_detail.jpg",
+    "title": "Смерть перед Рождеством",
+    "author": "Кристоффер Карлссон",
+    "price": 435,
+    "category": 4,
+    "rating": 1
+    },
+    {
+    "id": 9,
+    "imageUrl": "https://img-gorod.ru/28/393/2839365_detail.jpg",
+    "title": "Анна Каренина",
+    "author": "Лев Толстой",
+    "price": 640,
+    "category": 2,
+    "rating": 5
+    }
+]
