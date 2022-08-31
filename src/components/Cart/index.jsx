@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import rubIc from '../../assets/img/rub-ic.svg'
 import baskIc from '../../assets/img/bask-ic.svg'
@@ -14,10 +15,13 @@ const Cart = () => {
 
       <hr className={styles.cart__line}/>
 
-      <div className={styles.cart__item}>
-        <img src={baskIc} alt="ruble" />
-        <span className={styles.cart__count_ofproduct}>2</span>
-      </div>
+      <Link to="cart">
+        <div className={styles.cart__item}>
+          <img src={baskIc} alt="ruble" />
+          <span className={styles.cart__count_ofproduct}>2</span>
+        </div>
+      </Link>
+      
     </div>
   )
 }

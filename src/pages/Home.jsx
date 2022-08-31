@@ -2,37 +2,41 @@
 import React from 'react'
 
 import Categories from '../components/Categories';
-import Sort from '../components/Sort';
+import Sort, { sortList } from '../components/Sort';
 import BookBlock from '../components/BookBlock';
 import Sceleton from '../components/BookBlock/Sceleton';
 import Paginate from '../components/Paginate';
 
+import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import {setCurrentPage} from '../redux/slices/filterSlice'
+import {setCurrentPage, setFilters} from '../redux/slices/filterSlice'
+import { useNavigate } from 'react-router-dom';
+import qs from 'qs';
 
 import '../scss/app.scss'
-import axios from 'axios';
 
 
 
 
 function Home() {
+
   const [books, setBooks] = React.useState([])
   const [isLoading, setIsLoading] = React.useState(true)
 
-  console.log(books)
+  const isSearch = React.useRef(false)
+  const isMounted = React.useRef(false)
 
+  const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const {categoryId, sort, currentPage } = useSelector((state) => state.filter)
-
+  const { categoryId, sort, currentPage } = useSelector((state) => state.filter)
   const searchValue = useSelector(state => state.search.searchValue)
 
   const onChangePage = number => {
     dispatch(setCurrentPage(number))
   }
 
-  React.useEffect(() => {
+  const fetchBooks = () => {
     setIsLoading(true)
 
     const sortBy = sort.sortProperty.replace('-', '')
@@ -46,8 +50,50 @@ function Home() {
       setBooks(res.data)
       setIsLoading(false)
     })
+  }
 
+  React.useEffect(() => {
+    if(window.location.search) {
+      const params = qs.parse(window.location.search.substring(1))
+
+      const sort = sortList.find(obj => obj.sortProperty === params.sortProperty)
+
+      dispatch(
+        setFilters({
+          ...params,
+          sort
+        })
+      )
+
+      isSearch.current = true
+    }
+  }, [])
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0)
+
+    if(!isSearch.current) {
+      fetchBooks()
+    }
+
+    isSearch.current = false
   }, [categoryId, sort.sortProperty, searchValue, currentPage])
+
+
+  React.useEffect(() => {
+    if (isMounted.current) {
+      const queryString = qs.stringify({
+        sortProperty: sort.sortProperty,
+        categoryId,
+        currentPage
+      })
+  
+      navigate(`?${queryString}`)
+    }
+
+    isMounted.current = true
+
+  }, [categoryId, sort.sortProperty, currentPage])
 
   return (
     <div className="Home">
