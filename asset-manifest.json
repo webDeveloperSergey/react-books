@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/webDeveloperSergey/react-book/static/css/main.ee63e6e0.css",
-    "main.js": "/webDeveloperSergey/react-book/static/js/main.b14c6e83.js",
-    "static/media/empty-cart.webm": "/webDeveloperSergey/react-book/static/media/empty-cart.127f75f1db05c962efe6.webm",
-    "static/media/search-ic.svg": "/webDeveloperSergey/react-book/static/media/search-ic.aa35c29bb0a94ff00aa5e10434e1d9b9.svg",
-    "static/media/BookMark-logo.svg": "/webDeveloperSergey/react-book/static/media/BookMark-logo.9e2a3b08dc4eb35e2450de98889afc79.svg",
-    "static/media/bask-ic.svg": "/webDeveloperSergey/react-book/static/media/bask-ic.394320494b0ce8fded88aaef98894299.svg",
-    "static/media/rub-ic.svg": "/webDeveloperSergey/react-book/static/media/rub-ic.1260148c65b27aac72c5eb6ca322e248.svg",
-    "static/media/close-ic.svg": "/webDeveloperSergey/react-book/static/media/close-ic.e58e3f5aa0827a6d6e025a504a4cb85a.svg",
-    "index.html": "/webDeveloperSergey/react-book/index.html",
-    "main.ee63e6e0.css.map": "/webDeveloperSergey/react-book/static/css/main.ee63e6e0.css.map",
-    "main.b14c6e83.js.map": "/webDeveloperSergey/react-book/static/js/main.b14c6e83.js.map"
+    "main.css": "/webDeveloperSergey/react-books/static/css/main.ee63e6e0.css",
+    "main.js": "/webDeveloperSergey/react-books/static/js/main.639b4fec.js",
+    "static/media/empty-cart.webm": "/webDeveloperSergey/react-books/static/media/empty-cart.127f75f1db05c962efe6.webm",
+    "static/media/search-ic.svg": "/webDeveloperSergey/react-books/static/media/search-ic.aa35c29bb0a94ff00aa5e10434e1d9b9.svg",
+    "static/media/BookMark-logo.svg": "/webDeveloperSergey/react-books/static/media/BookMark-logo.9e2a3b08dc4eb35e2450de98889afc79.svg",
+    "static/media/bask-ic.svg": "/webDeveloperSergey/react-books/static/media/bask-ic.394320494b0ce8fded88aaef98894299.svg",
+    "static/media/rub-ic.svg": "/webDeveloperSergey/react-books/static/media/rub-ic.1260148c65b27aac72c5eb6ca322e248.svg",
+    "static/media/close-ic.svg": "/webDeveloperSergey/react-books/static/media/close-ic.e58e3f5aa0827a6d6e025a504a4cb85a.svg",
+    "index.html": "/webDeveloperSergey/react-books/index.html",
+    "main.ee63e6e0.css.map": "/webDeveloperSergey/react-books/static/css/main.ee63e6e0.css.map",
+    "main.639b4fec.js.map": "/webDeveloperSergey/react-books/static/js/main.639b4fec.js.map"
   },
   "entrypoints": [
     "static/css/main.ee63e6e0.css",
-    "static/js/main.b14c6e83.js"
+    "static/js/main.639b4fec.js"
   ]
 }
