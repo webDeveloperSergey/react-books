@@ -1,5 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+import { calcTotal } from '../../utils/calcTotal'
+import { findItem } from '../../utils/findItem'
+
 const initialState = {
   totalPrice: 0,
   totalCount: 0,
@@ -11,30 +14,40 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem(state, action) {
-      const findItem = state.items.find((obj) => obj.id === action.payload.id)
+      const currentItem = findItem(state.items, action.payload.id)
 
-      if (findItem) {
-        findItem.count++
+      if (currentItem) {
+        currentItem.count++
       } else {
         state.items.push({ ...action.payload, count: 1 })
       }
 
-      state.totalPrice = state.items.reduce((sum, obj) => sum + obj.price * obj.count, 0)
-
-      state.totalCount = state.items.reduce((sum, obj) => sum + obj.count, 0)
+      state.totalPrice = calcTotal(state.items, true)
+      state.totalCount = calcTotal(state.items, false)
     },
 
     minusItem(state, action) {
-      const findItem = state.items.find((obj) => obj.id === action.payload)
-      if (findItem) findItem.count--
-      state.totalCount = state.items.reduce((sum, obj) => sum + obj.count, 0)
+      const currentItem = findItem(state.items, action.payload)
+      if (currentItem) currentItem.count--
+
+      state.totalPrice = calcTotal(state.items, true)
+      state.totalCount = calcTotal(state.items, false)
     },
 
     removeItem(state, action) {
       state.items = state.items.filter((obj) => obj.id !== action.payload)
+
+      state.totalPrice = calcTotal(state.items, true)
+      state.totalCount = calcTotal(state.items, false)
+    },
+
+    clearCart(state) {
+      state.items = []
+      state.totalPrice = 0
+      state.totalCount = 0
     },
   },
 })
 
-export const { addItem, removeItem, minusItem } = cartSlice.actions
+export const { addItem, removeItem, minusItem, clearCart } = cartSlice.actions
 export default cartSlice.reducer

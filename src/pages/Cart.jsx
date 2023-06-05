@@ -1,10 +1,17 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 
+import { CartEmpty } from '../components/CartEmpty'
 import CartItem from '../components/CartItem'
+import { clearCart } from '../redux/slices/cartSlice'
 
 const Cart = () => {
   const { totalPrice, totalCount, items } = useSelector((state) => state.cart)
+  const dispatch = useDispatch()
+
+  if (!items.length) return <CartEmpty />
+
   return (
     <div className='container container--cart'>
       <div className='cart'>
@@ -48,7 +55,7 @@ const Cart = () => {
               ></path>
             </svg>
 
-            <span>Очистить корзину</span>
+            <span onClick={() => dispatch(clearCart())}>Очистить корзину</span>
           </div>
         </div>
         <div className='content__items'>
@@ -68,7 +75,7 @@ const Cart = () => {
             </span>
           </div>
           <div className='cart__bottom-buttons'>
-            <a href=''>
+            <Link to='/'>
               <svg
                 width='8'
                 height='14'
@@ -86,7 +93,7 @@ const Cart = () => {
               </svg>
 
               <span>Вернуться назад</span>
-            </a>
+            </Link>
             <div className='button pay-btn'>
               <span>Оплатить сейчас</span>
             </div>

@@ -1,7 +1,7 @@
-@import "./variables";
-@import "./libs/normalize";
+@import './variables';
+@import './libs/normalize';
 
-@import "./components/all";
+@import './components/all';
 
 body {
   background-color: #fffdf9;
@@ -168,7 +168,7 @@ body {
     width: 185px;
   }
   &__title {
-    font-family: "Podkova";
+    font-family: 'Podkova';
     color: $active;
     font-weight: 700;
     font-size: 18px;
@@ -221,7 +221,7 @@ body {
     font-size: 0;
     // border: 1px solid #000;
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 50%;
       left: 50%;
@@ -233,7 +233,7 @@ body {
       transition: all 0.3s;
     }
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       top: 50%;
       left: 50%;
@@ -538,4 +538,8 @@ body {
       font-size: 18px;
     }
   }
+}
+
+.cart-video {
+  margin: 50px 0;
 }
