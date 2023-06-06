@@ -33,7 +33,7 @@ function Home() {
     dispatch(setCurrentPage(number))
   }
 
-  const fetchBooks = () => {
+  const fetchBooks = async () => {
     setIsLoading(true)
 
     const sortBy = sort.sortProperty.replace('-', '')
@@ -41,14 +41,17 @@ function Home() {
     const category = categoryId > 0 ? `category=${categoryId}` : ''
     const search = searchValue ? `&search=${searchValue}` : ''
 
-    axios
-      .get(
+    try {
+      const res = await axios.get(
         `https://62df14f79c47ff309e813ee0.mockapi.io/books?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`,
       )
-      .then((res) => {
-        setBooks(res.data)
-        setIsLoading(false)
-      })
+      setBooks(res.data)
+    } catch (err) {
+      console.log('ERROR', err)
+      alert('Ошибка при загрузки книг')
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   // Забираем инфу с поисковой строки и записываем в стейт
