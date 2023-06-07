@@ -2,7 +2,6 @@
   "name": "react-books",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/webDeveloperSergey/react-books",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.2",
     "@testing-library/jest-dom": "^5.16.4",
@@ -27,8 +26,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint --fix --ext .js,.jsx .",
-    "predeploy": "npm run build"
+    "lint": "eslint --fix --ext .js,.jsx ."
   },
   "eslintConfig": {
     "extends": [
