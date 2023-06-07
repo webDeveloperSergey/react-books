@@ -7,9 +7,10 @@ import styles from './Cart.module.scss'
 
 import baskIc from '../../assets/img/bask-ic.svg'
 import rubIc from '../../assets/img/rub-ic.svg'
+import { selectCart } from '../../redux/slices/cartSlice'
 
 const Cart = () => {
-  const { totalPrice, totalCount, items } = useSelector((state) => state.cart)
+  const { totalPrice, totalCount, items } = useSelector(selectCart)
 
   return (
     <div className={styles.cart}>

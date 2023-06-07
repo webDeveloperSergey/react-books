@@ -12,46 +12,35 @@ import Categories from '../components/Categories'
 import Paginate from '../components/Paginate'
 import Sort, { sortList } from '../components/Sort'
 
-import { setCurrentPage, setFilters } from '../redux/slices/filterSlice'
+import { addItem, fetchBooks } from '../redux/slices/bookSlice'
+import { selectFilter, setCurrentPage, setFilters } from '../redux/slices/filterSlice'
 
 import '../scss/app.scss'
 
 function Home() {
-  const [books, setBooks] = React.useState([])
-  const [isLoading, setIsLoading] = React.useState(true)
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const isSearch = React.useRef(false)
   const isMounted = React.useRef(false)
 
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const { categoryId, sort, currentPage } = useSelector(selectFilter)
 
-  const { categoryId, sort, currentPage } = useSelector((state) => state.filter)
+  const { bookItems, status } = useSelector((state) => state.book)
+
   const searchValue = useSelector((state) => state.search.searchValue)
 
   const onChangePage = (number) => {
     dispatch(setCurrentPage(number))
   }
 
-  const fetchBooks = async () => {
-    setIsLoading(true)
-
+  const getBooks = async () => {
     const sortBy = sort.sortProperty.replace('-', '')
     const order = sort.sortProperty.includes('-') ? 'asc' : 'desc'
     const category = categoryId > 0 ? `category=${categoryId}` : ''
     const search = searchValue ? `&search=${searchValue}` : ''
 
-    try {
-      const res = await axios.get(
-        `https://62df14f79c47ff309e813ee0.mockapi.io/books?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`,
-      )
-      setBooks(res.data)
-    } catch (err) {
-      console.log('ERROR', err)
-      alert('Ошибка при загрузки книг')
-    } finally {
-      setIsLoading(false)
-    }
+    dispatch(fetchBooks({ sortBy, order, category, search, currentPage }))
   }
 
   // Забираем инфу с поисковой строки и записываем в стейт
@@ -76,7 +65,7 @@ function Home() {
     window.scrollTo(0, 0)
 
     if (!isSearch.current) {
-      fetchBooks()
+      getBooks()
     }
 
     isSearch.current = false
@@ -97,6 +86,9 @@ function Home() {
     isMounted.current = true
   }, [categoryId, sort.sortProperty, currentPage])
 
+  const books = bookItems.map((obj) => <BookItem key={obj.id} {...obj} />)
+  const skeletons = [...new Array(4)].map((_, index) => <Sceleton key={index} />)
+
   return (
     <div className='Home'>
       <div className='container'>
@@ -105,11 +97,19 @@ function Home() {
           <Sort />
         </div>
 
-        <div className='content-book'>
-          {isLoading
-            ? [...new Array(4)].map((_, index) => <Sceleton key={index} />)
-            : books.map((obj) => <BookItem key={obj.id} {...obj} />)}
-        </div>
+        {status === 'error' ? (
+          <div>
+            <h2>
+              Произошла ошибка <span>😕</span>
+            </h2>
+            <br />
+            <p>
+              К сожалению, не удалось получить книги. <br /> Попробуйте повторить попытку позже.
+            </p>
+          </div>
+        ) : (
+          <div className='content-book'>{status === 'loading' ? skeletons : books}</div>
+        )}
 
         <Paginate onChangePage={onChangePage} />
       </div>
