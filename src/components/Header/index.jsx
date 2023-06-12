@@ -1,10 +1,14 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom'
 
 import logoSvg from '../../assets/img/BookMark-logo.svg'
 import Cart from '../Cart'
 import Search from '../Search'
 
 const Header = () => {
+  let { pathname } = useLocation()
+
+  console.log(pathname)
   return (
     <div className='header'>
       <div className='header__wrap'>
@@ -12,7 +16,7 @@ const Header = () => {
           <a href='/'>
             <img src={logoSvg} alt='BookMark' />
           </a>
-          <Search />
+          {pathname !== '/cart' && <Search />}
         </div>
 
         <div className='header__item'>
