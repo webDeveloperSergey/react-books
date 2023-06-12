@@ -8,7 +8,6 @@ import Search from '../Search'
 const Header = () => {
   let { pathname } = useLocation()
 
-  console.log(pathname)
   return (
     <div className='header'>
       <div className='header__wrap'>

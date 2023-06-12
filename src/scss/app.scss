@@ -247,6 +247,22 @@ body {
   }
 }
 
+.book-page {
+  display: flex;
+  justify-content: space-between;
+  &__img img {
+    max-width: 350px;
+  }
+  &__info {
+    max-width: 500px;
+  }
+  &__author {
+    margin: 10px 0 30px 0;
+    font-weight: 500;
+    color: #626262;
+  }
+}
+
 .content-book {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
