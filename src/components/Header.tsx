@@ -1,11 +1,12 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
 
-import logoSvg from '../../assets/img/BookMark-logo.svg'
-import Cart from '../Cart'
-import Search from '../Search'
+import Cart from './Cart'
+import Search from './Search'
 
-const Header = () => {
+import logoSvg from '../assets/img/BookMark-logo.svg'
+
+const Header: React.FC = () => {
   let { pathname } = useLocation()
 
   return (

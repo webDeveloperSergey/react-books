@@ -1,7 +1,7 @@
 import React from 'react'
 import ContentLoader from 'react-content-loader'
 
-const Sceleton = (props) => (
+const Sceleton: React.FC = () => (
   <ContentLoader
     className='skeleton-block'
     speed={2}

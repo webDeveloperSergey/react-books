@@ -11,7 +11,7 @@ import Categories from '../components/Categories'
 import Paginate from '../components/Paginate'
 import Sort, { sortList } from '../components/Sort'
 
-import { addItem, fetchBooks } from '../redux/slices/bookSlice'
+import { fetchBooks } from '../redux/slices/bookSlice'
 import { selectFilter, setCurrentPage, setFilters } from '../redux/slices/filterSlice'
 
 import '../scss/app.scss'
@@ -25,12 +25,12 @@ function Home() {
 
   const { categoryId, sort, currentPage } = useSelector(selectFilter)
 
-  const { bookItems, status } = useSelector((state) => state.book)
+  const { bookItems, status } = useSelector((state: any) => state.book)
 
-  const searchValue = useSelector((state) => state.search.searchValue)
+  const searchValue = useSelector((state: any) => state.search.searchValue)
 
-  const onChangePage = (number) => {
-    dispatch(setCurrentPage(number))
+  const onChangePage = (page: number) => {
+    dispatch(setCurrentPage(page))
   }
 
   const getBooks = async () => {
@@ -39,6 +39,7 @@ function Home() {
     const category = categoryId > 0 ? `category=${categoryId}` : ''
     const search = searchValue ? `&search=${searchValue}` : ''
 
+    //@ts-ignore need to fix
     dispatch(fetchBooks({ sortBy, order, category, search, currentPage }))
   }
 
@@ -85,7 +86,7 @@ function Home() {
     isMounted.current = true
   }, [categoryId, sort.sortProperty, currentPage])
 
-  const books = bookItems.map((obj) => <BookItem key={obj.id} {...obj} />)
+  const books = bookItems.map((obj: IBook) => <BookItem key={obj.id} {...obj} />)
   const skeletons = [...new Array(4)].map((_, index) => <Sceleton key={index} />)
 
   return (

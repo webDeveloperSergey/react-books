@@ -3,9 +3,9 @@ import React, { useRef } from 'react'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { setSort } from '../../redux/slices/filterSlice'
+import { setSort } from '../redux/slices/filterSlice'
 
-export const sortList = [
+export const sortList: ISort[] = [
   { name: 'популярности (DESC)', sortProperty: 'rating' },
   { name: 'популярности (ASC)', sortProperty: '-rating' },
   { name: 'цене (DESC)', sortProperty: 'price' },
@@ -14,11 +14,11 @@ export const sortList = [
   { name: 'алфавиту (ASC)', sortProperty: '-title' },
 ]
 
-const Sort = () => {
-  const sort = useSelector((state) => state.filter.sort)
+const Sort: React.FC = () => {
+  const sort = useSelector((state: any) => state.filter.sort)
   const dispatch = useDispatch()
 
-  const sortRef = useRef()
+  const sortRef = useRef<HTMLDivElement>(null)
 
   const [isOpen, setIsOpen] = React.useState(false)
 
@@ -26,7 +26,7 @@ const Sort = () => {
   const activeClass = `${defaultClass} sort-active`
 
   useEffect(() => {
-    const isShowHandler = (event) => {
+    const isShowHandler = (event: any) => {
       if (!event.composedPath().includes(sortRef.current)) {
         setIsOpen(false)
       }
@@ -37,7 +37,7 @@ const Sort = () => {
     return () => document.body.removeEventListener('click', isShowHandler)
   }, [])
 
-  const clickOptions = (obj) => {
+  const clickOptions = (obj: ISort) => {
     dispatch(setSort(obj))
     setIsOpen(false)
   }

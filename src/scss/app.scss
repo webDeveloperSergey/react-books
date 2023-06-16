@@ -250,6 +250,7 @@ body {
 .book-page {
   display: flex;
   justify-content: space-between;
+  position: relative;
   &__img img {
     max-width: 350px;
   }
@@ -260,6 +261,11 @@ body {
     margin: 10px 0 30px 0;
     font-weight: 500;
     color: #626262;
+  }
+  &__button {
+    margin-top: 40px;
+    font-size: 16px;
+    font-weight: 500;
   }
 }
 

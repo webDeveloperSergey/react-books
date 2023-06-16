@@ -3,29 +3,29 @@ import debounce from 'lodash.debounce'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 
-import closeIc from '../../assets/img/close-ic.svg'
-import searchIc from '../../assets/img/search-ic.svg'
-import { setSearchValue } from '../../redux/slices/searchSlice'
+import closeIc from '../assets/img/close-ic.svg'
+import searchIc from '../assets/img/search-ic.svg'
+import { setSearchValue } from '../redux/slices/searchSlice'
 
-const Search = () => {
+const Search: React.FC = () => {
   const dispatch = useDispatch()
   const [value, setValue] = React.useState('')
-  const inputRef = React.useRef()
+  const inputRef = React.useRef<HTMLInputElement>(null)
 
   const clearInput = () => {
     dispatch(setSearchValue(''))
     setValue('')
-    inputRef.current.focus()
+    inputRef.current?.focus()
   }
 
   const updateSearchValue = React.useCallback(
-    debounce((str) => {
+    debounce((str: string) => {
       dispatch(setSearchValue(str))
     }, 250),
     [],
   )
 
-  const onChangeInput = (event) => {
+  const onChangeInput = (event: any) => {
     setValue(event.target.value)
     updateSearchValue(event.target.value)
   }

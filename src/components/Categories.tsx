@@ -1,15 +1,15 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { selectFilter, setCategoryId } from '../../redux/slices/filterSlice'
+import { selectFilter, setCategoryId } from '../redux/slices/filterSlice'
 
-const Categories = () => {
+const Categories: React.FC = () => {
   const categories = ['Все', 'Фантастика', 'Классика', 'Приключения', 'Детектив']
 
   const dispatch = useDispatch()
   const { categoryId } = useSelector(selectFilter)
 
-  const activeItem = (index) => {
+  const activeItem = (index: number) => {
     dispatch(setCategoryId(index))
   }
 

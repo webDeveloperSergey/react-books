@@ -5,11 +5,13 @@ import { Link } from 'react-router-dom'
 import rubIc from '../../assets/img/rub-ic.svg'
 import { addItem } from '../../redux/slices/cartSlice'
 
-const BookItem = (props) => {
+interface BookProps extends IBook {}
+
+const BookItem: React.FC<BookProps> = (props) => {
   let { id, imageUrl, title, author, price } = props
 
   const dispatch = useDispatch()
-  const cartItem = useSelector((state) => state.cart.items.find((obj) => obj.id === id))
+  const cartItem = useSelector((state: any) => state.cart.items.find((obj: IBook) => obj.id === id))
 
   const addOnClick = () => {
     const item = { ...props }
