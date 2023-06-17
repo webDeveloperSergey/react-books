@@ -9,7 +9,7 @@ import { setSearchValue } from '../redux/slices/searchSlice'
 
 const Search: React.FC = () => {
   const dispatch = useDispatch()
-  const [value, setValue] = React.useState('')
+  const [value, setValue] = React.useState<string>('')
   const inputRef = React.useRef<HTMLInputElement>(null)
 
   const clearInput = () => {
@@ -25,7 +25,7 @@ const Search: React.FC = () => {
     [],
   )
 
-  const onChangeInput = (event: any) => {
+  const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value)
     updateSearchValue(event.target.value)
   }

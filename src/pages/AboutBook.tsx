@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
@@ -9,7 +9,7 @@ import { addItem } from '../redux/slices/cartSlice'
 const AboutBook: React.FC = () => {
   const { id } = useParams()
 
-  const [book, setBook] = useState<IBook>()
+  const [book, setBook] = React.useState<IBook>()
 
   const dispatch = useDispatch()
   const cartItem = useSelector((state: any) => state.cart.items.find((obj: IBook) => obj.id === id))

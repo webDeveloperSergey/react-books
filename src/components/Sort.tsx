@@ -20,14 +20,14 @@ const Sort: React.FC = () => {
 
   const sortRef = useRef<HTMLDivElement>(null)
 
-  const [isOpen, setIsOpen] = React.useState(false)
+  const [isOpen, setIsOpen] = React.useState<boolean>(false)
 
   const defaultClass = 'sort__list'
   const activeClass = `${defaultClass} sort-active`
 
   useEffect(() => {
-    const isShowHandler = (event: any) => {
-      if (!event.composedPath().includes(sortRef.current)) {
+    const isShowHandler = (event: MouseEvent) => {
+      if (sortRef.current && !event.composedPath().includes(sortRef.current)) {
         setIsOpen(false)
       }
     }

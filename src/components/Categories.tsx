@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { selectFilter, setCategoryId } from '../redux/slices/filterSlice'
 
 const Categories: React.FC = () => {
-  const categories = ['Все', 'Фантастика', 'Классика', 'Приключения', 'Детектив']
+  const categories: string[] = ['Все', 'Фантастика', 'Классика', 'Приключения', 'Детектив']
 
   const dispatch = useDispatch()
   const { categoryId } = useSelector(selectFilter)

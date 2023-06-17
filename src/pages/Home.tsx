@@ -111,7 +111,7 @@ function Home() {
           <div className='content-book'>{status === 'loading' ? skeletons : books}</div>
         )}
 
-        <Paginate onChangePage={onChangePage} />
+        <Paginate onChangePage={onChangePage} currentPage={currentPage} />
       </div>
     </div>
   )
