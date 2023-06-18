@@ -3,6 +3,7 @@ import React, { useRef } from 'react'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { ISort } from '../@types/types'
 import { setSort } from '../redux/slices/filterSlice'
 
 export const sortList: ISort[] = [

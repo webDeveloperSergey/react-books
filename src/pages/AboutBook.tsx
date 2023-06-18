@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
+import { IBook } from '../@types/types'
 import { addItem } from '../redux/slices/cartSlice'
 
 const AboutBook: React.FC = () => {
@@ -35,7 +36,7 @@ const AboutBook: React.FC = () => {
   const addedCount: number = cartItem ? cartItem.count : 0
 
   if (!book) {
-    return 'Идет загрузка'
+    return <>'Идет загрузка'</>
   }
 
   return (
@@ -47,6 +48,7 @@ const AboutBook: React.FC = () => {
       <div className='book-page__info'>
         <h2>{book.title}</h2>
         <h3 className='book-page__author'>{book.author}</h3>
+        {/* <span>{book.rating}</span> */}
         <p>{book.descr}</p>
         <button onClick={addOnClick} className='button button--black book-page__button'>
           В корзину

@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+import { IBook } from '../../@types/types'
 import rubIc from '../../assets/img/rub-ic.svg'
 import { addItem } from '../../redux/slices/cartSlice'
 

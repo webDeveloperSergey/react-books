@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { useNavigate } from 'react-router-dom'
 
+import { IBook } from '../@types/types'
 import BookItem from '../components/BookItem'
 import Sceleton from '../components/BookItem/Sceleton'
 import Categories from '../components/Categories'

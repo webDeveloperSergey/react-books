@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 
+import { IBook } from '../@types/types'
 import { addItem, minusItem, removeItem } from '../redux/slices/cartSlice'
 
 interface CartItemProps extends IBook {

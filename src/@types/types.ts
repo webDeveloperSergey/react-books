@@ -1,4 +1,4 @@
-interface IBook {
+export interface IBook {
   id: string
   imageUrl: string
   title: string
@@ -9,7 +9,7 @@ interface IBook {
   rating: number
 }
 
-interface ISort {
+export interface ISort {
   name: string
   sortProperty: string
 }
