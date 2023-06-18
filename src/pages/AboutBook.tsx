@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
-import { IBook } from '../@types/types'
+import { IBook, ICartItem } from '../@types/types'
 import { addItem } from '../redux/slices/cartSlice'
 
 const AboutBook: React.FC = () => {
@@ -29,8 +29,8 @@ const AboutBook: React.FC = () => {
   }, [])
 
   const addOnClick = () => {
-    const item = { ...book }
-    dispatch(addItem(item))
+    const item = { ...book, count: 0 }
+    dispatch(addItem(item as ICartItem))
   }
 
   const addedCount: number = cartItem ? cartItem.count : 0

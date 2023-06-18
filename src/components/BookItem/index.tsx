@@ -15,7 +15,7 @@ const BookItem: React.FC<BookProps> = (props) => {
   const cartItem = useSelector((state: any) => state.cart.items.find((obj: IBook) => obj.id === id))
 
   const addOnClick = () => {
-    const item = { ...props }
+    const item = { ...props, count: 0 }
     dispatch(addItem(item))
   }
 

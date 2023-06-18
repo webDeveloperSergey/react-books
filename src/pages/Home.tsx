@@ -5,21 +5,22 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { useNavigate } from 'react-router-dom'
 
-import { IBook } from '../@types/types'
+import { IBook, ISort } from '../@types/types'
 import BookItem from '../components/BookItem'
 import Sceleton from '../components/BookItem/Sceleton'
 import Categories from '../components/Categories'
 import Paginate from '../components/Paginate'
 import Sort, { sortList } from '../components/Sort'
 
-import { fetchBooks } from '../redux/slices/bookSlice'
-import { selectFilter, setCurrentPage, setFilters } from '../redux/slices/filterSlice'
+import { ISearchBookParams, fetchBooks } from '../redux/slices/bookSlice'
+import { IFilterState, selectFilter, setCurrentPage, setFilters } from '../redux/slices/filterSlice'
 
 import '../scss/app.scss'
+import { useAppDispatch } from '../redux/store'
 
 function Home() {
   const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   const isSearch = React.useRef(false)
   const isMounted = React.useRef(false)
@@ -40,27 +41,27 @@ function Home() {
     const category = categoryId > 0 ? `category=${categoryId}` : ''
     const search = searchValue ? `&search=${searchValue}` : ''
 
-    //@ts-ignore need to fix
-    dispatch(fetchBooks({ sortBy, order, category, search, currentPage }))
+    dispatch(fetchBooks({ sortBy, order, category, search, currentPage: String(currentPage) }))
   }
 
   // Забираем инфу с поисковой строки и записываем в стейт
-  React.useEffect(() => {
-    if (window.location.search) {
-      const params = qs.parse(window.location.search.substring(1))
+  // React.useEffect(() => {
+  //   if (window.location.search) {
+  //     const params = qs.parse(window.location.search.substring(1)) as unknown as ISearchBookParams
 
-      const sort = sortList.find((obj) => obj.sortProperty === params.sortProperty)
+  //     const sort = sortList.find((obj) => obj.sortProperty === params.sortBy)
 
-      dispatch(
-        setFilters({
-          ...params,
-          sort,
-        }),
-      )
+  //     dispatch(
+  //       setFilters({
+  //         categoryId: Number(params.category),
+  //         currentPage: Number(params.currentPage),
+  //         sort: sort || sortList[0],
+  //       }),
+  //     )
 
-      isSearch.current = true
-    }
-  }, [])
+  //     isSearch.current = true
+  //   }
+  // }, [])
 
   React.useEffect(() => {
     window.scrollTo(0, 0)
@@ -72,20 +73,20 @@ function Home() {
     isSearch.current = false
   }, [categoryId, sort.sortProperty, searchValue, currentPage])
 
-  // Берем данные из стейта и генерируем строку запроса
-  React.useEffect(() => {
-    if (isMounted.current) {
-      const queryString = qs.stringify({
-        sortProperty: sort.sortProperty,
-        categoryId,
-        currentPage,
-      })
+  // // Берем данные из стейта и генерируем строку запроса
+  // React.useEffect(() => {
+  //   if (isMounted.current) {
+  //     const queryString = qs.stringify({
+  //       sortProperty: sort.sortProperty,
+  //       categoryId,
+  //       currentPage,
+  //     })
 
-      navigate(`?${queryString}`)
-    }
+  //     navigate(`?${queryString}`)
+  //   }
 
-    isMounted.current = true
-  }, [categoryId, sort.sortProperty, currentPage])
+  //   isMounted.current = true
+  // }, [categoryId, sort.sortProperty, currentPage])
 
   const books = bookItems.map((obj: IBook) => <BookItem key={obj.id} {...obj} />)
   const skeletons = [...new Array(4)].map((_, index) => <Sceleton key={index} />)

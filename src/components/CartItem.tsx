@@ -1,18 +1,16 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 
-import { IBook } from '../@types/types'
+import { ICartItem } from '../@types/types'
 import { addItem, minusItem, removeItem } from '../redux/slices/cartSlice'
 
-interface CartItemProps extends IBook {
-  count: number
-}
+interface CartItemProps extends ICartItem {}
 
 const CartItem: React.FC<CartItemProps> = ({ id, imageUrl, title, author, price, count }) => {
   const dispatch = useDispatch()
 
   const onClickRemove = (id: string) => dispatch(removeItem(id))
-  const onClickPlus = (id: string) => dispatch(addItem({ id }))
+  const onClickPlus = (id: string) => dispatch(addItem({ id } as ICartItem))
   const onClickMinus = (id: string) => dispatch(minusItem(id))
 
   return (
